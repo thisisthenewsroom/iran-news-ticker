@@ -1,0 +1,153 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+  
+    #my-custom-ticker-container {
+      display: flex !important;
+      align-items: center !important;
+      background-color: #1a1a1a !important;
+      height: 50px !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-family: 'Noto Sans TC', sans-serif !important;
+    }
+  
+    .ticker-logo-section {
+      display: flex !important;
+      align-items: center !important;
+      padding: 0 15px !important;
+      height: 100% !important;
+      background: transparent !important;
+      flex-shrink: 0;
+    }
+  
+    .ticker-logo-section img {
+      height: 25px !important;
+      width: auto !important;
+      filter: brightness(0) invert(1) !important;
+    }
+  
+    .ticker-orange-label {
+      background-color: #ff8800 !important;
+      color: #ffffff !important;
+      padding: 0 12px !important;
+      height: 32px !important;
+      display: flex !important;
+      align-items: center !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      border-radius: 4px !important;
+      margin-left: 0px !important;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+      /* 關鍵：隱藏超出標籤範圍的波紋 */
+      overflow: hidden !important; 
+      position: relative;
+    }
+  
+    .live-dot-container {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      margin-right: 12px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+  
+    .live-static-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #ffffff !important;
+      border-radius: 50% !important;
+    }
+  
+    /* 波紋效果 */
+    .live-dot-container::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      animation: epicenter-ripple 1.5s ease-out infinite;
+      box-sizing: border-box;
+    }
+  
+    @keyframes epicenter-ripple {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(6); opacity: 0; } /* 加大倍數以填滿標籤高度 */
+    }
+  
+    /* --- 無縫滾動優化區 --- */
+    .ticker-scroll-area {
+      flex-grow: 1 !important;
+      overflow: hidden !important;
+      display: flex !important;
+    }
+  
+    .ticker-moving-text {
+      display: flex !important;
+      white-space: nowrap !important;
+      animation: ticker-seamless 15s linear infinite !important;
+    }
+  
+    .news-group {
+      display: flex;
+      flex-shrink: 0;
+      padding-right: 50px; /* 兩組新聞之間的「安全間距」 */
+    }
+  
+    .news-item {
+      color: white !important;
+      font-size: 17px !important;
+      margin-right: 20px; /* 每條新聞之間的間距 */
+    }
+  
+    @keyframes ticker-seamless {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  
+    .ticker-scroll-area:hover .ticker-moving-text {
+      animation-play-state: paused !important;
+    }
+  </style>
+  
+  <div id="my-custom-ticker-container">
+    <div class="ticker-logo-section">
+      <img src="https://thecollectivehk.com/wp-content/uploads/2022/11/HEADER2x.png" alt="Media Logo">
+    </div>
+  
+    <div class="ticker-orange-label">
+      <div class="live-dot-container">
+        <div class="live-static-dot"></div>
+      </div>
+      中東局勢
+    </div>
+  
+    <div class="ticker-scroll-area">
+      <div class="ticker-moving-text">
+        <div class="news-group">
+          <span class="news-item">美國及以色列攻擊伊朗後，戰事進入第三日有擴散跡象</span>
+          <span class="news-item">伊朗及真主黨攻擊美國及以色列目標以報復哈梅內伊被殺</span>
+          <span class="news-item">特朗普表示空襲行動將繼續，但對實際持續時間沒有明確答案</span>
+          <span class="news-item">特朗普及美國戰爭部長先後多次表明無意採取地面戰進攻伊朗</span>
+          <span class="news-item">伊朗外長阿拉格齊指有可能在數日內選出新任最高領袖</span>
+          <span class="news-item">至少四名美軍確認行動中喪生，美軍稱三架戰機在科威特被友軍擊落</span>
+          <span class="news-item">伊朗紅新月會表示至少 555 人空襲中遇害，被空襲女子小學至少 148 人喪生</span>
+        </div>
+        <div class="news-group">
+            <span class="news-item">美國及以色列攻擊伊朗後，戰事進入第三日有擴散跡象</span>
+            <span class="news-item">伊朗及真主黨攻擊美國及以色列目標以報復哈梅內伊被殺</span>
+            <span class="news-item">特朗普表示空襲行動將繼續，但對實際持續時間沒有明確答案</span>
+            <span class="news-item">特朗普及美國戰爭部長先後多次表明無意採取地面戰進攻伊朗</span>
+            <span class="news-item">伊朗外長阿拉格齊指有可能在數日內選出新任最高領袖</span>
+            <span class="news-item">至少四名美軍確認行動中喪生，美軍稱三架戰機在科威特被友軍擊落</span>
+            <span class="news-item">伊朗紅新月會表示至少 555 人空襲中遇害，被空襲女子小學至少 148 人喪生</span>
+        </div>
+      </div>
+    </div>
+  </div>
